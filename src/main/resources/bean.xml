@@ -11,5 +11,7 @@
 <!--        <bean id="instanceFactory" class="com.xiongben.factory.InstanceFactory"></bean>-->
 <!--        <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>-->
 
-    <bean id="accountService" class="com.xiongben.factory.StaticFactory" factory-method="getAccountService"></bean>
+<!--    <bean id="accountService" class="com.xiongben.factory.StaticFactory" factory-method="getAccountService"></bean>-->
+    <bean id="accountService" class="com.xiongben.service.impl.AccountServiceImpl"
+          scope="singleton" init-method="init" destroy-method="destroy"></bean>
 </beans>

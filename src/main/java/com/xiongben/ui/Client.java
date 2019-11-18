@@ -18,9 +18,10 @@ public class Client {
 //            as.saveAccount();
 //        }
 
-        ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
+        ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
         IAccountService as = (IAccountService)ac.getBean("accountService");
         as.saveAccount();
+        ac.close();
 //        System.out.println(as);
     }
 }
