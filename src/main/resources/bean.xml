@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <context:component-scan base-package="com.xiongben"></context:component-scan>
+
 <!--    <bean id="accountService" class="com.xiongben.service.impl.AccountServiceImpl"></bean>-->
 <!--    <bean id="accountDao" class="com.xiongben.dao.impl.AccountDaoImpl"></bean>-->
 
@@ -17,41 +23,41 @@
 
 <!--       注入-->
 <!--    构造方法注入-->
-       <bean id="accountService" class="com.xiongben.service.impl.AccountServiceImpl">
-           <constructor-arg name="name" value="xiongben"></constructor-arg>
-           <constructor-arg name="age" value="26"></constructor-arg>
-           <constructor-arg name="birthday" ref="now"></constructor-arg>
-       </bean>
-       <bean id="now" class="java.util.Date"></bean>
+<!--       <bean id="accountService" class="com.xiongben.service.impl.AccountServiceImpl">-->
+<!--           <constructor-arg name="name" value="xiongben"></constructor-arg>-->
+<!--           <constructor-arg name="age" value="26"></constructor-arg>-->
+<!--           <constructor-arg name="birthday" ref="now"></constructor-arg>-->
+<!--       </bean>-->
+<!--       <bean id="now" class="java.util.Date"></bean>-->
 
 <!--    set方法注入-->
-       <bean id="accountService2" class="com.xiongben.service.impl.AccountServiceImpl2">
-           <property name="name" value="ksksks"></property>
-           <property name="age" value="44"></property>
-           <property name="birthday" ref="now"></property>
-       </bean>
+<!--       <bean id="accountService2" class="com.xiongben.service.impl.AccountServiceImpl2">-->
+<!--           <property name="name" value="ksksks"></property>-->
+<!--           <property name="age" value="44"></property>-->
+<!--           <property name="birthday" ref="now"></property>-->
+<!--       </bean>-->
 
-       <bean id="accountService3" class="com.xiongben.service.impl.AccountServiceImpl3">
-           <property name="myStrs">
-               <set>
-                   <value>aaaa</value>
-                   <value>bbbb</value>
-                   <value>cccc</value>
-               </set>
-           </property>
-           <property name="myList">
-               <set>
-                   <value>aaaa</value>
-                   <value>bbbb</value>
-                   <value>cccc</value>
-               </set>
-           </property>
-           <property name="myMap">
-               <map>
-                  <entry key="aa" value="aaaa"></entry>
-                   <entry key="bb" value="bbbb"></entry>
-               </map>
-           </property>
-       </bean>
+<!--       <bean id="accountService3" class="com.xiongben.service.impl.AccountServiceImpl3">-->
+<!--           <property name="myStrs">-->
+<!--               <set>-->
+<!--                   <value>aaaa</value>-->
+<!--                   <value>bbbb</value>-->
+<!--                   <value>cccc</value>-->
+<!--               </set>-->
+<!--           </property>-->
+<!--           <property name="myList">-->
+<!--               <set>-->
+<!--                   <value>aaaa</value>-->
+<!--                   <value>bbbb</value>-->
+<!--                   <value>cccc</value>-->
+<!--               </set>-->
+<!--           </property>-->
+<!--           <property name="myMap">-->
+<!--               <map>-->
+<!--                  <entry key="aa" value="aaaa"></entry>-->
+<!--                   <entry key="bb" value="bbbb"></entry>-->
+<!--               </map>-->
+<!--           </property>-->
+<!--       </bean>-->
 
 </beans>

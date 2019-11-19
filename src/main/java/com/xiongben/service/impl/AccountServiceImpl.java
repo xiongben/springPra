@@ -4,25 +4,22 @@ import com.xiongben.dao.IAccountDao;
 import com.xiongben.dao.impl.AccountDaoImpl;
 import com.xiongben.factory.BeanFactory;
 import com.xiongben.service.IAccountService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
+@Service("accountService")
 public class AccountServiceImpl implements IAccountService {
 //    private IAccountDao accountdao = (IAccountDao) BeanFactory.getBean("accountDao");
-//    private IAccountDao accountdao;
 
-    private String name;
-    private Integer age;
-    private Date birthday;
+    @Autowired
+    private IAccountDao accountdao;
 
-    public AccountServiceImpl(String name,Integer age,Date birthday){
-        this.name = name;
-        this.age = age;
-        this.birthday = birthday;
-    }
 
     public void saveAccount() {
-        System.out.println("service中的saveAccount方法执行了,,," + name + "," + age + "," + birthday);
+        accountdao.saveAccount();
+        System.out.println("service中的saveAccount方法执行了,,,");
     }
 
 //    public void init(){
