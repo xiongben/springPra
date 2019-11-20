@@ -20,7 +20,7 @@ public class Client {
 
         ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
         IAccountService as = (IAccountService)ac.getBean("accountService");
-        as.saveAccount();
+//        as.saveAccount();
 //        System.out.println(as);
     }
 }
