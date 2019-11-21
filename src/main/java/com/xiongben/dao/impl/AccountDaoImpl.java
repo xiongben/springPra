@@ -5,17 +5,19 @@ import com.xiongben.domain.Account;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository("accountDao1")
 public class AccountDaoImpl implements IAccountDao {
+    @Autowired
     private QueryRunner runner;
 
-    public void setRunner(QueryRunner runner){
-        this.runner = runner;
-    }
+//    public void setRunner(QueryRunner runner){
+//        this.runner = runner;
+//    }
 
 
     public void saveAccount(Account account) {
