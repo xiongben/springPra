@@ -3,24 +3,40 @@ package com.xiongben.ui;
 import com.xiongben.domain.Account;
 import com.xiongben.service.IAccountService;
 import config.SpringConfiguration;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = SpringConfiguration.class)
 public class ClientTest {
+    private ApplicationContext ac;
+
+    @Autowired
+    private IAccountService as;
+
+//    @Before
+//    public void init(){
+//         ac = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+//        //2.得到业务层对象
+//         as = ac.getBean("accountService",IAccountService.class);
+//    }
 
     @Test
     public void testFindAll() {
         //1.获取容易
 //        ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
-        ApplicationContext ac = new AnnotationConfigApplicationContext(SpringConfiguration.class);
-        //2.得到业务层对象
-        IAccountService as = ac.getBean("accountService",IAccountService.class);
+
         //3.执行方法
         List<Account> accounts = as.findAllAccount();
         for(Account account : accounts){

@@ -13,18 +13,18 @@
 <!--        <bean id="accountDao" class="com.xiongben.dao.impl.AccountDaoImpl">-->
 <!--                <property name="runner" ref="runner"></property>-->
 <!--        </bean>-->
-<!--        <context:component-scan base-package="com.xiongben"></context:component-scan>-->
+        <context:component-scan base-package="com.xiongben"></context:component-scan>
 
-<!--        <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">-->
-<!--                <constructor-arg name="ds" ref="dataSource"></constructor-arg>-->
-<!--        </bean>-->
+        <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+                <constructor-arg name="ds" ref="dataSource"></constructor-arg>
+        </bean>
 
-<!--        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-<!--                <property name="driverClass" value="com.mysql.jdbc.Driver"></property>-->
-<!--                <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/petstore?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false"></property>-->
-<!--                <property name="user" value="root"></property>-->
-<!--                <property name="password" value="xb2010550918"></property>-->
-<!--        </bean>-->
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+                <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/petstore?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false"></property>
+                <property name="user" value="root"></property>
+                <property name="password" value="xb2010550918"></property>
+        </bean>
 
 
 
