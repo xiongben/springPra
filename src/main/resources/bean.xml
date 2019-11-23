@@ -21,9 +21,9 @@
 
         <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
                 <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-                <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/eesy"></property>
+                <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/petstore?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false"></property>
                 <property name="user" value="root"></property>
-                <property name="password" value="1234"></property>
+                <property name="password" value="xb2010550918"></property>
         </bean>
 
 
