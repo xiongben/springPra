@@ -43,4 +43,10 @@ public class ClientTest {
             System.out.println(account);
         }
     }
+
+    @Test
+    public void testTransfer(){
+        as.transfer("aaa","bbb",100f);
+    }
+
 }

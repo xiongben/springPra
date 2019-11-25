@@ -34,5 +34,7 @@ public interface IAccountService {
      * @param acccountId
      */
     void deleteAccount(Integer acccountId);
+
+    void transfer(String sourceName,String targetName,Float money);
 }
 

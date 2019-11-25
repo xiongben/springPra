@@ -50,6 +50,15 @@ public class AccountServiceImpl implements IAccountService {
         accountdao.deleteAccount(acccountId);
     }
 
+    public void transfer(String sourceName, String targetName, Float money) {
+        Account source = accountdao.findAccountByName(sourceName);
+        Account target = accountdao.findAccountByName(targetName);
+        source.setMoney(source.getMoney()-money);
+        target.setMoney(target.getMoney()+money);
+        accountdao.updateAccount(source);
+        accountdao.updateAccount(target);
+    }
+
     //    public void saveAccount() {
 //        accountdao.saveAccount();
 //        System.out.println("service中的saveAccount方法执行了,,,");

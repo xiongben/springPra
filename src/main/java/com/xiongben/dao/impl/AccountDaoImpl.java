@@ -8,6 +8,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository("accountDao1")
@@ -56,6 +57,21 @@ public class AccountDaoImpl implements IAccountDao {
         try {
             runner.update("delete from account where id=?",accountId);
         }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Account findAccountByName(String accountName) {
+        try {
+            List<Account> accounts = runner.query("select * from account where name = ?",new BeanListHandler<Account>(Account.class),accountName);
+            if(accounts == null || accounts.size() == 0){
+                return null;
+            }
+            if(accounts.size() > 1){
+                throw new RuntimeException("结果不唯一，数据有问题");
+            }
+            return accounts.get(0);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
