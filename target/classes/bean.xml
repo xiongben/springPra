@@ -16,7 +16,7 @@
         <context:component-scan base-package="com.xiongben"></context:component-scan>
 
         <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
-                <constructor-arg name="ds" ref="dataSource"></constructor-arg>
+<!--                <constructor-arg name="ds" ref="dataSource"></constructor-arg>-->
         </bean>
 
         <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -26,7 +26,17 @@
                 <property name="password" value="xb2010550918"></property>
         </bean>
 
+        <!-- 配置Connection的工具类 ConnectionUtils -->
+        <bean id="connectionUtils" class="com.itheima.utils.ConnectionUtils">
+            <!-- 注入数据源-->
+            <property name="dataSource" ref="dataSource"></property>
+        </bean>
 
+        <!-- 配置事务管理器-->
+        <bean id="txManager" class="com.itheima.utils.TransactionManager">
+            <!-- 注入ConnectionUtils -->
+            <property name="connectionUtils" ref="connectionUtils"></property>
+        </bean>
 
 <!--    <bean id="accountService" class="com.xiongben.service.impl.AccountServiceImpl"></bean>-->
 <!--    <bean id="accountDao" class="com.xiongben.dao.impl.AccountDaoImpl"></bean>-->

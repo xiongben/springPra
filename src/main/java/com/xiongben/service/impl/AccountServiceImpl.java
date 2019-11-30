@@ -5,6 +5,7 @@ import com.xiongben.dao.impl.AccountDaoImpl;
 import com.xiongben.domain.Account;
 import com.xiongben.factory.BeanFactory;
 import com.xiongben.service.IAccountService;
+import com.xiongben.utils.TransactionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -25,38 +26,115 @@ public class AccountServiceImpl implements IAccountService {
 //    @Qualifier("accountDao1")
     @Resource(name = "accountDao1")
     private IAccountDao accountdao;
+    @Autowired
+    private TransactionManager txmanager;
+
+    public void setTxmanager(TransactionManager txmanager) {
+        this.txmanager = txmanager;
+    }
+
+
 
     public void setAccountdao(IAccountDao accountdao){
         this.accountdao = accountdao;
     }
 
     public List<Account> findAllAccount() {
-        return accountdao.findAllAccount();
+        try {
+            txmanager.beginTransaction();
+            List<Account> accounts = accountdao.findAllAccount();
+            txmanager.commit();
+            return accounts;
+        }catch (Exception e){
+            txmanager.rollback();
+            throw new RuntimeException(e);
+        }finally {
+            txmanager.release();
+        }
+//        return accountdao.findAllAccount();
     }
 
     public Account findAccountById(Integer accountId) {
-        return accountdao.findAccountById(accountId);
+        try {
+            txmanager.beginTransaction();
+            Account account = accountdao.findAccountById(accountId);
+            txmanager.commit();
+            return account;
+        }catch (Exception e){
+            txmanager.rollback();
+            throw new RuntimeException(e);
+        }finally {
+            txmanager.release();
+        }
+//        return accountdao.findAccountById(accountId);
     }
 
     public void saveAccount(Account account) {
-         accountdao.saveAccount(account);
+        try {
+            txmanager.beginTransaction();
+            accountdao.saveAccount(account);
+            txmanager.commit();
+        }catch (Exception e){
+            txmanager.rollback();
+            throw new RuntimeException(e);
+        }finally {
+            txmanager.release();
+        }
+//         accountdao.saveAccount(account);
     }
 
     public void updateAccount(Account account) {
-        accountdao.updateAccount(account);
+        try {
+            txmanager.beginTransaction();
+            accountdao.updateAccount(account);
+            txmanager.commit();
+        }catch (Exception e){
+            txmanager.rollback();
+            throw new RuntimeException(e);
+        }finally {
+            txmanager.release();
+        }
+//        accountdao.updateAccount(account);
     }
 
     public void deleteAccount(Integer acccountId) {
-        accountdao.deleteAccount(acccountId);
+        try {
+            txmanager.beginTransaction();
+            accountdao.deleteAccount(acccountId);
+            txmanager.commit();
+        }catch (Exception e){
+            txmanager.rollback();
+            throw new RuntimeException(e);
+        }finally {
+            txmanager.release();
+        }
+//        accountdao.deleteAccount(acccountId);
     }
 
     public void transfer(String sourceName, String targetName, Float money) {
-        Account source = accountdao.findAccountByName(sourceName);
-        Account target = accountdao.findAccountByName(targetName);
-        source.setMoney(source.getMoney()-money);
-        target.setMoney(target.getMoney()+money);
-        accountdao.updateAccount(source);
-        accountdao.updateAccount(target);
+        try {
+            txmanager.beginTransaction();
+            Account source = accountdao.findAccountByName(sourceName);
+            Account target = accountdao.findAccountByName(targetName);
+            source.setMoney(source.getMoney()-money);
+            target.setMoney(target.getMoney()+money);
+            accountdao.updateAccount(source);
+//            int i=1/0;
+            accountdao.updateAccount(target);
+            txmanager.commit();
+        }catch (Exception e){
+            txmanager.rollback();
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }finally {
+            txmanager.release();
+        }
+//        Account source = accountdao.findAccountByName(sourceName);
+//        Account target = accountdao.findAccountByName(targetName);
+//        source.setMoney(source.getMoney()-money);
+//        target.setMoney(target.getMoney()+money);
+//        accountdao.updateAccount(source);
+//        accountdao.updateAccount(target);
     }
 
     //    public void saveAccount() {
