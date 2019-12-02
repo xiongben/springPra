@@ -39,20 +39,22 @@ public class AccountServiceImpl implements IAccountService {
         this.accountdao = accountdao;
     }
 
+
+
     public List<Account> findAllAccount() {
-        try {
-            txmanager.beginTransaction();
-            List<Account> accounts = accountdao.findAllAccount();
-            txmanager.commit();
-            return accounts;
-        }catch (Exception e){
-            txmanager.rollback();
-            throw new RuntimeException(e);
-        }finally {
-            txmanager.release();
-        }
-//        return accountdao.findAllAccount();
-    }
+//        try {
+//            txmanager.beginTransaction();
+//            List<Account> accounts = accountdao.findAllAccount();
+//            txmanager.commit();
+//            return accounts;
+//        }catch (Exception e){
+//            txmanager.rollback();
+//            throw new RuntimeException(e);
+//        }finally {
+//            txmanager.release();
+//        }
+        return accountdao.findAllAccount();
+}
 
     public Account findAccountById(Integer accountId) {
         try {
