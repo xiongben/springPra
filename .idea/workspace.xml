@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcb5f895-9070-44c9-b130-6523a4e08a8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/xiongben/test/AccountServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiongben/dao/impl/AccountDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiongben/dao/impl/AccountDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xiongben/jdbctemplate/JdbcTemplateDemo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xiongben/jdbctemplate/JdbcTemplateDemo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bean.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bean.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xiongben/jdbctemplate/JdbcTemplateDemo1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xiongben/jdbctemplate/JdbcTemplateDemo1.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +40,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AccountServiceTest.testfun">
     <configuration name="JdbcTemplateDemo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.xiongben.jdbctemplate.JdbcTemplateDemo1" />
       <module name="spring_template" />
@@ -48,8 +54,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AccountServiceTest.testfun" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring_template" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.xiongben.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.xiongben.test" />
+      <option name="MAIN_CLASS_NAME" value="com.xiongben.test.AccountServiceTest" />
+      <option name="METHOD_NAME" value="testfun" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountServiceTest.testfun" />
         <item itemvalue="Application.JdbcTemplateDemo1" />
       </list>
     </recent_temporary>
@@ -84,26 +107,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="533" y="141" key="#com.intellij.ide.util.MemberChooser" timestamp="1576578105887">
+    <state x="533" y="141" key="#com.intellij.ide.util.MemberChooser" timestamp="1576642036447">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="141" key="#com.intellij.ide.util.MemberChooser/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576578105887" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1576466384852">
+    <state x="533" y="141" key="#com.intellij.ide.util.MemberChooser/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576642036447" />
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1576665217087">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576466384852" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1576466384851">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576665217087" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1576665217085">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576466384851" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1576466384850">
+    <state width="1398" height="245" key="GridCell.Tab.0.center/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576665217085" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1576665217084">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576466384850" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1576466384851">
+    <state width="1398" height="245" key="GridCell.Tab.0.left/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576665217084" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1576665217086">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576466384851" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/-1920.-42.1920.1080/0.0.1440.900/1440.-42.1920.1080@0.0.1440.900" timestamp="1576665217086" />
     <state x="229" y="89" key="SettingsEditor" timestamp="1576463886386">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
