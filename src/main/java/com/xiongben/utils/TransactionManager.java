@@ -1,12 +1,21 @@
 package com.xiongben.utils;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("txManager")
+@Aspect
 public class TransactionManager {
 
+    @Autowired
     private ConnectionUtils connectionUtils;
 
-    public void setConnectionUtils(ConnectionUtils connectionUtils) {
-        this.connectionUtils = connectionUtils;
-    }
+    @Pointcut("execution(* com.xiongben.service.impl.*.*(..))")
+    private void pt1(){}
 
     /**
      * 开启事务
@@ -50,6 +59,23 @@ public class TransactionManager {
             connectionUtils.removeConnection();
         }catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    @Around("pt1()")
+    public Object aroundAdvice(ProceedingJoinPoint pjp){
+        Object rtValue = null;
+        try {
+            Object[] args = pjp.getArgs();
+            this.beginTransaction();
+            rtValue = pjp.proceed(args);
+            this.commit();
+            return  rtValue;
+        }catch (Throwable e){
+            this.rollback();
+            throw new RuntimeException(e);
+        }finally {
+            this.release();
         }
     }
 }

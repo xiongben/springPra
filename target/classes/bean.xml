@@ -2,25 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <!--配置server-->
-    <bean id="accountService" class="com.xiongben.service.impl.AccountServiceImpl">
-        <property name="accountDao" ref="accountDao"></property>
-    </bean>
-    <!-- 配置Dao对象   -->
-    <bean id="accountDao" class="com.xiongben.dao.impl.AccountDaoImpl">
-        <property name="runner" ref="runner"></property>
-        <property name="connectionUtils" ref="connectionUtils"></property>
-    </bean>
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--    配置spring创建容器要扫描的包-->
+    <context:component-scan base-package="com.xiongben"></context:component-scan>
     <!--    配置queryRunner-->
     <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype"></bean>
-    <!--    配置connection工具类-->
-    <bean id="connectionUtils" class="com.xiongben.utils.ConnectionUtils">
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
+
 
     <!-- 配置数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -30,19 +24,6 @@
         <property name="password" value="xB$12345678"></property>
     </bean>
 
-    <!--    配置事物管理器-->
-    <bean id="txManager" class="com.xiongben.utils.TransactionManager">
-        <property name="connectionUtils" ref="connectionUtils"></property>
-    </bean>
-
-    <!--    配置aop-->
-    <aop:config>
-        <aop:pointcut id="pt1" expression="execution(* com.xiongben.service.impl.*.*(..))"/>
-        <aop:aspect id="txAdvice" ref="txManager">
-            <aop:before method="beginTransaction" pointcut-ref="pt1"></aop:before>
-            <aop:after-returning method="commit" pointcut-ref="pt1"></aop:after-returning>
-            <aop:after-throwing method="rollback" pointcut-ref="pt1"></aop:after-throwing>
-            <aop:after method="release" pointcut-ref="pt1"></aop:after>
-        </aop:aspect>
-    </aop:config>
+    <!--    开启spring对注解aop的支持-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>
