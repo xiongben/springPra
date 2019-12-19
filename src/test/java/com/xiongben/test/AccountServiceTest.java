@@ -19,9 +19,10 @@ public class AccountServiceTest {
 
     @Test
     public void testfun(){
-        List<Account> accounts =  as.findAllAccount();
-        for (Account account: accounts){
-            System.out.println(accounts.toString());
-        }
+          as.transfer("%卡卡西%","%鼬%",100f);
+//        List<Account> accounts =  as.findAllAccount();
+//        for (Account account: accounts){
+//            System.out.println(account.toString());
+//        }
     }
 }
